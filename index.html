@@ -41,37 +41,42 @@
         </div>
       </dialog>
       <dialog id="settings-dialog">
-        <h2>Settings</h2>
+        <h2>Cookie Preferences</h2>
+        <p class="settings-description">Choose what information we can collect to improve your experience.</p>
         <form id="settings-form">
           <div class="form-field">
-            <p>Browser</p>
-            <label id="browser-toggle" for="browser">
+            <p id="browser-label">Browser</p>
+            <label id="browser-toggle" for="browser" aria-labelledby="browser-label">
               <input type="checkbox" name="browser" id="browser" checked />
               <span class="slider"></span>
             </label>
           </div>
           <div class="form-field">
-            <p>Operating System</p>
-            <label id="os-toggle" for="os">
+            <p id="os-label">Operating System</p>
+            <label id="os-toggle" for="os" aria-labelledby="os-label">
               <input type="checkbox" name="os" id="os" checked />
               <span class="slider"></span>
             </label>
           </div>
           <div class="form-field">
-            <p>Screen Height</p>
-            <label id="height-toggle" for="height">
+            <p id="height-label">Screen Height</p>
+            <label id="height-toggle" for="height" aria-labelledby="height-label">
               <input type="checkbox" name="height" id="height" checked />
               <span class="slider"></span>
             </label>
           </div>
           <div class="form-field">
-            <p>Screen Width</p>
-            <label id="width-toggle" for="width">
+            <p id="width-label">Screen Width</p>
+            <label id="width-toggle" for="width" aria-labelledby="width-label">
               <input type="checkbox" name="width" id="width" checked />
               <span class="slider"></span>
             </label>
           </div>
-          <input class="primary-button" type="button" value="Save Preferences" />
+          <div class="button-row">
+            <button class="secondary-button">Accept all</button>
+            <button class="secondary-button">Reject all</button>
+          </div>
+          <input class="primary-button" type="submit" value="Save Preferences" />
         </form>
       </dialog>
     </main>

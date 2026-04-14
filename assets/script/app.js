@@ -2,4 +2,4 @@
 
 const firstDialog = document.getElementById("settings-dialog");
 
-// firstDialog.showModal();
+firstDialog.showModal();
