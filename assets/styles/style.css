@@ -9,22 +9,22 @@ main {
   font-family: monospace;
   min-height: 100dvh;
   background: rgba(0, 0, 0, 0.6) url(../media/background.jpg) no-repeat center/cover;
-  color: rgb(255, 255, 255);
   background-blend-mode: overlay;
   display: grid;
   place-items: center;
-  font-size: 3.2rem;
 }
 
-p {
+.main-paragraph {
+  color: rgb(255, 255, 255);
+  font-size: 3.2rem;
   padding-inline: 10rem;
   font-weight: 500;
 }
 
-span:nth-child(even) {
+.main-paragraph span:nth-child(even) {
   color: #ff6c29;
 }
 
-span:nth-child(odd) {
+.main-paragraph span:nth-child(odd) {
   color: #67f65d;
 }
