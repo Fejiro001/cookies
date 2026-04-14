@@ -58,3 +58,20 @@ dialog {
 dialog::backdrop {
   backdrop-filter: blur(10px);
 }
+
+button,
+input[type="button"] {
+  border-radius: 5px;
+  padding: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+}
+
+.secondary-button {
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+}
