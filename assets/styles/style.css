@@ -1,1 +1,6 @@
 @import "./reset.css";
+
+.container {
+  max-width: min(100% - 30px, 1240px);
+  margin-inline: auto;
+}
