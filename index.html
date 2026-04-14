@@ -9,10 +9,18 @@
     <link rel="stylesheet" href="./assets/styles/style.css" />
     <script src="./assets/script/app.js" defer></script>
     <title>Cookies</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <main>
-      <div class="container">
+      <div class="container text-container">
+        <h1>Cookies</h1>
         <p class="main-paragraph">
           <span>Cookies</span> (also known as a <span>web cookies</span> or <span>browser cookies</span>) are
           <span>small pieces of data</span> a server sends to a user's web browser. You can <span>store cookies</span>,
@@ -20,8 +28,9 @@
           requests.
         </p>
       </div>
-      <dialog id="cookies">
-        <h1>Cookies Consent</h1>
+      <dialog id="cookies-dialog">
+        <i class="fa-solid fa-cookie-bite"></i>
+        <h2>Cookies Consent</h2>
         <p>
           We baked some <span>delicious cookies</span> just for you. By clicking <span>"Accept all cookies"</span>, you help us remember
           your preferences and make your visit <span>faster</span>, <span>smoother</span>, and a little more <span>delightful</span>.
@@ -31,7 +40,8 @@
           <button class="secondary-button">Manage cookies</button>
         </div>
       </dialog>
-      <dialog id="settings">
+      <dialog id="settings-dialog">
+        <h2>Settings</h2>
         <form id="settings-form">
           <label id="browser-toggle" for="browser"
             >Browser

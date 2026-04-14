@@ -1,5 +1,10 @@
 @import "./reset.css";
 
+:root {
+  --primary-color: #ff6c29;
+  --secondary-color: #67f65d;
+}
+
 .container {
   max-width: min(100% - 30px, 1240px);
   margin-inline: auto;
@@ -14,17 +19,42 @@ main {
   place-items: center;
 }
 
+.text-container {
+  padding-inline: 10rem;
+}
+
+h1 {
+  font-size: 4.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
 .main-paragraph {
   color: rgb(255, 255, 255);
   font-size: 3.2rem;
-  padding-inline: 10rem;
   font-weight: 500;
 }
 
 .main-paragraph span:nth-child(even) {
-  color: #ff6c29;
+  color: var(--primary-color);
 }
 
 .main-paragraph span:nth-child(odd) {
-  color: #67f65d;
+  color: var(--secondary-color);
+}
+
+dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border: none;
+  border-radius: 5px;
+  max-width: 50rem;
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(10px);
 }
