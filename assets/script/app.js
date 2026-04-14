@@ -1,5 +1,5 @@
 "use strict";
 
-const firstDialog = document.getElementById("cookies-dialog");
+const firstDialog = document.getElementById("settings-dialog");
 
-firstDialog.showModal();
+// firstDialog.showModal();

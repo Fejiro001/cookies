@@ -43,26 +43,34 @@
       <dialog id="settings-dialog">
         <h2>Settings</h2>
         <form id="settings-form">
-          <label id="browser-toggle" for="browser"
-            >Browser
-            <input type="checkbox" name="browser" id="browser" checked />
-            <span class="slider"></span>
-          </label>
-          <label id="os-toggle" for="os"
-            >Operating System
-            <input type="checkbox" name="os" id="os" checked />
-            <span class="slider"></span>
-          </label>
-          <label id="height-toggle" for="height"
-            >Screen Height
-            <input type="checkbox" name="height" id="height" checked />
-            <span class="slider"></span>
-          </label>
-          <label id="width-toggle" for="width"
-            >Screen Width
-            <input type="checkbox" name="width" id="width" checked />
-            <span class="slider"></span>
-          </label>
+          <div class="form-field">
+            <p>Browser</p>
+            <label id="browser-toggle" for="browser">
+              <input type="checkbox" name="browser" id="browser" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="form-field">
+            <p>Operating System</p>
+            <label id="os-toggle" for="os">
+              <input type="checkbox" name="os" id="os" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="form-field">
+            <p>Screen Height</p>
+            <label id="height-toggle" for="height">
+              <input type="checkbox" name="height" id="height" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="form-field">
+            <p>Screen Width</p>
+            <label id="width-toggle" for="width">
+              <input type="checkbox" name="width" id="width" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
           <input class="primary-button" type="button" value="Save Preferences" />
         </form>
       </dialog>
