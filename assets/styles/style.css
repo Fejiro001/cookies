@@ -87,6 +87,8 @@ input[type="button"] {
   padding: 1rem;
   font-weight: 600;
   text-transform: capitalize;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid var(--dark-primary-color);
 }
 
 .primary-button {
@@ -94,10 +96,18 @@ input[type="button"] {
   color: #fff;
 }
 
+.primary-button:hover {
+  background-color: #bc4a16;
+}
+
 .secondary-button {
-  border: 1px solid var(--primary-color);
   background-color: transparent;
   color: var(--dark-primary-color);
+}
+
+.secondary-button:hover {
+  background-color: var(--dark-primary-color);
+  color: #fff;
 }
 
 #cookies-dialog {
@@ -121,4 +131,10 @@ i {
 
 .button-row button {
   width: 100%;
+}
+
+@media (max-width: 900px) {
+  .button-row {
+    flex-direction: column;
+  }
 }
