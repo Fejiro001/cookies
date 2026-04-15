@@ -2,6 +2,7 @@
 
 const cookieDialog = document.getElementById("cookies-dialog");
 const manageCookies = document.getElementById("manage-cookies");
+const acceptCookies = document.getElementById("accept-cookies");
 const settingsDialog = document.getElementById("settings-dialog");
 
 function setCookie(name, value, maxAge) {
@@ -72,3 +73,9 @@ if (navigator.cookieEnabled) {
     }, 3000);
   }
 }
+
+manageCookies.addEventListener("click", () => {
+  cookieDialog.close();
+  settingsDialog.showModal();
+});
+
