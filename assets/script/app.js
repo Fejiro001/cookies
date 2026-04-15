@@ -56,3 +56,13 @@ function getBrowserName() {
 
   return "Other Browser";
 }
+
+function getScreenDimensions() {
+  const height = window.screen.height;
+  const width = window.screen.width;
+
+  return [height, width];
+}
+
+if (document.cookie) {
+}
