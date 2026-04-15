@@ -1,6 +1,7 @@
 "use strict";
 
 const cookieDialog = document.getElementById("cookies-dialog");
+const manageCookies = document.getElementById("manage-cookies");
 const settingsDialog = document.getElementById("settings-dialog");
 
 function setCookie(name, value, maxAge) {
@@ -64,5 +65,10 @@ function getScreenDimensions() {
   return [height, width];
 }
 
-if (document.cookie) {
+if (navigator.cookieEnabled) {
+  if (!document.cookie) {
+    setTimeout(() => {
+      cookieDialog.showModal();
+    }, 3000);
+  }
 }
