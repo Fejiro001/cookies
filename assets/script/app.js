@@ -79,3 +79,18 @@ manageCookies.addEventListener("click", () => {
   settingsDialog.showModal();
 });
 
+function acceptAllCookies() {
+  const [height, width] = getScreenDimensions();
+  const browserName = getBrowserName();
+  const osName = getOperatingSystem();
+
+  setCookie("Browser", browserName, 15);
+  setCookie("Operating System", osName, 15);
+  setCookie("Screen Height", height, 15);
+  setCookie("Screen Width", width, 15);
+  cookieDialog.close();
+}
+
+acceptCookies.addEventListener("click", () => {
+  acceptAllCookies();
+});
