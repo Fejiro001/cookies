@@ -34,12 +34,25 @@ function getCookies() {
 }
 
 function getOperatingSystem() {
-  let browserData = navigator.platform.toLowerCase();
-  return browserData.includes("win")
-    ? "Windows"
-    : browserData.includes("mac")
-      ? "MacOS"
-      : browserData.includes("linux")
-        ? "Linux"
-        : "No OS";
+  let osData = navigator.userAgent.toLowerCase();
+
+  if (osData.includes("win")) return "Windows";
+  if (osData.includes("mac")) return "MacOS";
+  if (osData.includes("iphone") || osData.includes("ipad")) return "iOS";
+  if (osData.includes("android")) return "Android";
+  if (osData.includes("linux")) return "Linux";
+
+  return "Other OS";
+}
+
+function getBrowserName() {
+  let browserData = navigator.userAgent.toLowerCase();
+
+  if (browserData.includes("edg")) return "Micorsoft Edge";
+  if (browserData.includes("opr") || browserData.includes("opera")) return "Opera";
+  if (browserData.includes("firefox")) return "Firefox";
+  if (browserData.includes("chrome")) return "Chrome";
+  if (browserData.includes("safari")) return "Safari";
+
+  return "Other Browser";
 }
