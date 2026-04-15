@@ -32,3 +32,14 @@ function getCookies() {
     });
   }
 }
+
+function getOperatingSystem() {
+  let browserData = navigator.platform.toLowerCase();
+  return browserData.includes("win")
+    ? "Windows"
+    : browserData.includes("mac")
+      ? "MacOS"
+      : browserData.includes("linux")
+        ? "Linux"
+        : "No OS";
+}
