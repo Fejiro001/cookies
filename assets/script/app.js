@@ -2,7 +2,7 @@
 
 const cookieDialog = document.getElementById("cookies-dialog");
 const manageCookies = document.getElementById("manage-cookies");
-const acceptCookies = document.getElementById("accept-cookies");
+const acceptCookies = document.querySelectorAll("#accept-cookies");
 const settingsDialog = document.getElementById("settings-dialog");
 
 function setCookie(name, value, maxAge) {
@@ -88,9 +88,13 @@ function acceptAllCookies() {
   setCookie("Operating System", osName, 15);
   setCookie("Screen Height", height, 15);
   setCookie("Screen Width", width, 15);
-  cookieDialog.close();
+
+  if (cookieDialog.open) cookieDialog.close();
+  if (settingsDialog.open) settingsDialog.close();
 }
 
-acceptCookies.addEventListener("click", () => {
-  acceptAllCookies();
+acceptCookies.forEach((button) => {
+  button.addEventListener("click", () => {
+    acceptAllCookies();
+  });
 });
