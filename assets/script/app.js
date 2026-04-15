@@ -1,9 +1,10 @@
 "use strict";
 
 const cookieDialog = document.getElementById("cookies-dialog");
-const manageCookies = document.getElementById("manage-cookies");
-const acceptCookies = document.querySelectorAll("#accept-cookies");
 const settingsDialog = document.getElementById("settings-dialog");
+const manageCookiesBtn = document.getElementById("manage-cookies");
+const rejectCookiesBtn = document.getElementById("reject-cookies");
+const acceptCookiesBtn = document.querySelectorAll("#accept-cookies");
 
 function setCookie(name, value, maxAge) {
   let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
@@ -74,7 +75,7 @@ if (navigator.cookieEnabled) {
   }
 }
 
-manageCookies.addEventListener("click", () => {
+manageCookiesBtn.addEventListener("click", () => {
   cookieDialog.close();
   settingsDialog.showModal();
 });
@@ -93,8 +94,22 @@ function acceptAllCookies() {
   if (settingsDialog.open) settingsDialog.close();
 }
 
-acceptCookies.forEach((button) => {
+acceptCookiesBtn.forEach((button) => {
   button.addEventListener("click", () => {
     acceptAllCookies();
   });
+});
+
+const settings = ["Browser", "Operating System", "Screen Height", "Screen Width"];
+
+function rejectAllCookies() {
+  settings.forEach((setting) => {
+    setCookie(setting, "rejected", 15);
+  });
+
+  if (settingsDialog.open) settingsDialog.close();
+}
+
+rejectCookiesBtn.addEventListener("click", () => {
+  rejectAllCookies();
 });
