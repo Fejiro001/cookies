@@ -103,4 +103,4 @@ function savePreferences(e) {
 
 ## Demo
 
-Click [here]() to demo
+Click [here](https://fejiro001.github.io/cookies/) to demo
