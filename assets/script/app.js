@@ -9,7 +9,7 @@ const settingsForm = document.getElementById("settings-form");
 const acceptCookiesBtn = document.querySelectorAll("#accept-cookies");
 const checkBoxes = document.querySelectorAll("input[type='checkbox']");
 
-let deviceData = navigator.userAgent.toLowerCase();
+const deviceData = navigator.userAgent.toLowerCase();
 
 function setCookie(name, value, maxAge) {
   let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; path=/; SameSite=Lax`;
@@ -101,14 +101,13 @@ function acceptAllCookies() {
 
   if (cookieDialog.open) cookieDialog.close();
 
-
   setTimeout(() => {
     if (settingsDialog.open) settingsDialog.close();
   }, 1000);
 }
 
 acceptCookiesBtn.forEach((button) => {
-  button.addEventListener("click", () => acceptAllCookies());
+  button.addEventListener("click", acceptAllCookies);
 });
 
 manageCookiesBtn.addEventListener("click", () => {
