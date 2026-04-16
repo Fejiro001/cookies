@@ -6,8 +6,8 @@ const settingsDialog = document.getElementById("settings-dialog");
 const manageCookiesBtn = document.getElementById("manage-cookies");
 const rejectCookiesBtn = document.getElementById("reject-cookies");
 const acceptFormBtn = document.getElementById("accept-cookies-form");
-const savePreferencesBtn = settingsForm.querySelector("input[type='submit']");
 const settingsForm = document.getElementById("settings-form");
+const savePreferencesBtn = settingsForm.querySelector("input[type='submit']");
 const acceptCookiesBtn = document.querySelectorAll(".accept-cookies");
 const checkBoxes = document.querySelectorAll("input[type='checkbox']");
 
