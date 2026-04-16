@@ -98,6 +98,12 @@ input[type="submit"] {
   border: 1px solid var(--dark-primary-color);
 }
 
+button:disabled,
+input[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .primary-button,
 .secondary-button:hover,
 .secondary-button:focus-visible {

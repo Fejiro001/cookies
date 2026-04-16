@@ -5,6 +5,8 @@ const cookieDialog = document.getElementById("cookies-dialog");
 const settingsDialog = document.getElementById("settings-dialog");
 const manageCookiesBtn = document.getElementById("manage-cookies");
 const rejectCookiesBtn = document.getElementById("reject-cookies");
+const acceptFormBtn = document.getElementById("accept-cookies-form");
+const savePreferencesBtn = settingsForm.querySelector("input[type='submit']");
 const settingsForm = document.getElementById("settings-form");
 const acceptCookiesBtn = document.querySelectorAll(".accept-cookies");
 const checkBoxes = document.querySelectorAll("input[type='checkbox']");
@@ -81,7 +83,15 @@ function getDeviceInfo() {
   return [browserName, osName, screenHeight, screenWidth];
 }
 
+function disableSettingsButtons() {
+  acceptFormBtn.disabled = true;
+  rejectCookiesBtn.disabled = true;
+  savePreferencesBtn.disabled = true;
+}
+
 function acceptAllCookies() {
+  disableSettingsButtons();
+
   checkBoxes.forEach((checkbox) => {
     checkbox.checked = true;
   });
@@ -110,7 +120,14 @@ acceptCookiesBtn.forEach((button) => {
   button.addEventListener("click", acceptAllCookies);
 });
 
+function enableSettingsButtons() {
+  acceptFormBtn.disabled = false;
+  rejectCookiesBtn.disabled = false;
+  savePreferencesBtn.disabled = false;
+}
+
 manageCookiesBtn.addEventListener("click", () => {
+  enableSettingsButtons();
   cookieDialog.close();
   settingsDialog.showModal();
 });
@@ -121,6 +138,8 @@ function setRejectedCookie(setting) {
 
 const settings = ["Browser", "Operating System", "Screen Height", "Screen Width"];
 function rejectAllCookies() {
+  disableSettingsButtons();
+
   settings.forEach((setting) => {
     setRejectedCookie(setting);
   });
@@ -139,6 +158,8 @@ rejectCookiesBtn.addEventListener("click", () => {
 });
 
 function savePreferences(e) {
+  disableSettingsButtons();
+
   const data = new FormData(e.target);
   const entries = Object.fromEntries(data.entries());
   const { browser, os, height, width } = entries;
