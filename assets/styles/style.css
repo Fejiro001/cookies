@@ -9,7 +9,7 @@
 }
 
 .container {
-  max-width: min(100% - 50px, 1240px);
+  max-width: min(100% - 50px, 1080px);
   margin-inline: auto;
 }
 
