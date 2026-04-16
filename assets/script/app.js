@@ -5,9 +5,11 @@ const cookieDialog = document.getElementById("cookies-dialog");
 const settingsDialog = document.getElementById("settings-dialog");
 const manageCookiesBtn = document.getElementById("manage-cookies");
 const rejectCookiesBtn = document.getElementById("reject-cookies");
-const acceptCookiesBtn = document.querySelectorAll("#accept-cookies");
 const settingsForm = document.getElementById("settings-form");
+const acceptCookiesBtn = document.querySelectorAll("#accept-cookies");
 const checkBoxes = document.querySelectorAll("input[type='checkbox']");
+
+let deviceData = navigator.userAgent.toLowerCase();
 
 function setCookie(name, value, maxAge) {
   let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; path=/; SameSite=Lax`;
@@ -35,25 +37,21 @@ function getCookies() {
 }
 
 function getOperatingSystem() {
-  let osData = navigator.userAgent.toLowerCase();
-
-  if (osData.includes("win")) return "Windows";
-  if (osData.includes("mac")) return "MacOS";
-  if (osData.includes("iphone") || osData.includes("ipad")) return "iOS";
-  if (osData.includes("android")) return "Android";
-  if (osData.includes("linux")) return "Linux";
+  if (deviceData.includes("win")) return "Windows";
+  if (deviceData.includes("mac")) return "MacOS";
+  if (deviceData.includes("iphone") || deviceData.includes("ipad")) return "iOS";
+  if (deviceData.includes("android")) return "Android";
+  if (deviceData.includes("linux")) return "Linux";
 
   return "Other OS";
 }
 
 function getBrowserName() {
-  let browserData = navigator.userAgent.toLowerCase();
-
-  if (browserData.includes("edg")) return "Microsoft Edge";
-  if (browserData.includes("opr") || browserData.includes("opera")) return "Opera";
-  if (browserData.includes("firefox")) return "Firefox";
-  if (browserData.includes("chrome")) return "Chrome";
-  if (browserData.includes("safari")) return "Safari";
+  if (deviceData.includes("edg")) return "Microsoft Edge";
+  if (deviceData.includes("opr") || deviceData.includes("opera")) return "Opera";
+  if (deviceData.includes("firefox")) return "Firefox";
+  if (deviceData.includes("chrome")) return "Chrome";
+  if (deviceData.includes("safari")) return "Safari";
 
   return "Other Browser";
 }
@@ -75,17 +73,12 @@ if (navigator.cookieEnabled) {
   }
 }
 
-manageCookiesBtn.addEventListener("click", () => {
-  cookieDialog.close();
-  settingsDialog.showModal();
-});
-
-function getAllInfo() {
+function getDeviceInfo() {
   const [screenHeight, screenWidth] = getScreenDimensions();
   const browserName = getBrowserName();
   const osName = getOperatingSystem();
 
-  return [screenHeight, screenWidth, browserName, osName];
+  return [browserName, osName, screenHeight, screenWidth];
 }
 
 function acceptAllCookies() {
@@ -93,14 +86,21 @@ function acceptAllCookies() {
     checkbox.checked = true;
   });
 
-  const [screenHeight, screenWidth, browserName, osName] = getAllInfo();
+  const [browserName, osName, screenHeight, screenWidth] = getDeviceInfo();
 
-  setCookie("Browser", browserName, COOKIE_MAX_AGE);
-  setCookie("Operating System", osName, COOKIE_MAX_AGE);
-  setCookie("Screen Height", screenHeight, COOKIE_MAX_AGE);
-  setCookie("Screen Width", screenWidth, COOKIE_MAX_AGE);
+  const settingsValues = {
+    Browser: browserName,
+    "Operating System": osName,
+    "Screen Height": screenHeight,
+    "Screen Width": screenWidth
+  };
+
+  for (const setting in settingsValues) {
+    setCookie(setting, settingsValues[setting], COOKIE_MAX_AGE);
+  }
 
   if (cookieDialog.open) cookieDialog.close();
+
 
   setTimeout(() => {
     if (settingsDialog.open) settingsDialog.close();
@@ -108,17 +108,19 @@ function acceptAllCookies() {
 }
 
 acceptCookiesBtn.forEach((button) => {
-  button.addEventListener("click", () => {
-    acceptAllCookies();
-  });
+  button.addEventListener("click", () => acceptAllCookies());
 });
 
-const settings = ["Browser", "Operating System", "Screen Height", "Screen Width"];
+manageCookiesBtn.addEventListener("click", () => {
+  cookieDialog.close();
+  settingsDialog.showModal();
+});
 
 function setRejectedCookie(setting) {
   setCookie(setting, "rejected", COOKIE_MAX_AGE);
 }
 
+const settings = ["Browser", "Operating System", "Screen Height", "Screen Width"];
 function rejectAllCookies() {
   settings.forEach((setting) => {
     setRejectedCookie(setting);
@@ -142,14 +144,14 @@ function savePreferences(e) {
   const entries = Object.fromEntries(data.entries());
   const { browser, os, height, width } = entries;
 
-  const [screenHeight, screenWidth, browserName, osName] = getAllInfo();
+  const [browserName, osName, screenHeight, screenWidth] = getDeviceInfo();
 
   browser ? setCookie("Browser", browserName, COOKIE_MAX_AGE) : setRejectedCookie("Browser");
 
   os ? setCookie("Operating System", osName, COOKIE_MAX_AGE) : setRejectedCookie("Operating System");
 
   height ? setCookie("Screen Height", screenHeight, COOKIE_MAX_AGE) : setRejectedCookie("Screen Height");
-  
+
   width ? setCookie("Screen Width", screenWidth, COOKIE_MAX_AGE) : setRejectedCookie("Screen Width");
 
   if (settingsDialog.open) settingsDialog.close();
