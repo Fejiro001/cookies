@@ -5,6 +5,8 @@ const settingsDialog = document.getElementById("settings-dialog");
 const manageCookiesBtn = document.getElementById("manage-cookies");
 const rejectCookiesBtn = document.getElementById("reject-cookies");
 const acceptCookiesBtn = document.querySelectorAll("#accept-cookies");
+const settingsForm = document.getElementById("settings-form");
+const checkBoxes = document.querySelectorAll("input[type='checkbox']");
 
 function setCookie(name, value, maxAge) {
   let cookieString = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
@@ -81,6 +83,10 @@ manageCookiesBtn.addEventListener("click", () => {
 });
 
 function acceptAllCookies() {
+  checkBoxes.forEach((checkbox) => {
+    checkbox.checked = true;
+  });
+
   const [height, width] = getScreenDimensions();
   const browserName = getBrowserName();
   const osName = getOperatingSystem();
@@ -91,7 +97,10 @@ function acceptAllCookies() {
   setCookie("Screen Width", width, 15);
 
   if (cookieDialog.open) cookieDialog.close();
-  if (settingsDialog.open) settingsDialog.close();
+
+  setTimeout(() => {
+    if (settingsDialog.open) settingsDialog.close();
+  }, 1000);
 }
 
 acceptCookiesBtn.forEach((button) => {
@@ -106,8 +115,14 @@ function rejectAllCookies() {
   settings.forEach((setting) => {
     setCookie(setting, "rejected", 15);
   });
+  
+  checkBoxes.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
 
-  if (settingsDialog.open) settingsDialog.close();
+  setTimeout(() => {
+    if (settingsDialog.open) settingsDialog.close();
+  }, 1000);
 }
 
 rejectCookiesBtn.addEventListener("click", () => {
