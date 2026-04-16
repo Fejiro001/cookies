@@ -144,10 +144,13 @@ function savePreferences(e) {
 
   const [screenHeight, screenWidth, browserName, osName] = getAllInfo();
 
-  "browser" in entries ? setCookie("Browser", browserName, COOKIE_MAX_AGE) : setRejectedCookie("Browser");
-  "os" in entries ? setCookie("Operating System", osName, COOKIE_MAX_AGE) : setRejectedCookie("Operating System");
-  "height" in entries ? setCookie("Screen Height", screenHeight, COOKIE_MAX_AGE) : setRejectedCookie("Screen Height");
-  "width" in entries ? setCookie("Screen Width", screenWidth, COOKIE_MAX_AGE) : setRejectedCookie("Screen Width");
+  browser ? setCookie("Browser", browserName, COOKIE_MAX_AGE) : setRejectedCookie("Browser");
+
+  os ? setCookie("Operating System", osName, COOKIE_MAX_AGE) : setRejectedCookie("Operating System");
+
+  height ? setCookie("Screen Height", screenHeight, COOKIE_MAX_AGE) : setRejectedCookie("Screen Height");
+  
+  width ? setCookie("Screen Width", screenWidth, COOKIE_MAX_AGE) : setRejectedCookie("Screen Width");
 
   if (settingsDialog.open) settingsDialog.close();
 }
