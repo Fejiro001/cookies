@@ -6,7 +6,7 @@ const settingsDialog = document.getElementById("settings-dialog");
 const manageCookiesBtn = document.getElementById("manage-cookies");
 const rejectCookiesBtn = document.getElementById("reject-cookies");
 const settingsForm = document.getElementById("settings-form");
-const acceptCookiesBtn = document.querySelectorAll("#accept-cookies");
+const acceptCookiesBtn = document.querySelectorAll(".accept-cookies");
 const checkBoxes = document.querySelectorAll("input[type='checkbox']");
 
 const deviceData = navigator.userAgent.toLowerCase();

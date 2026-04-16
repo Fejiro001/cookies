@@ -37,44 +37,44 @@
           your preferences and make your visit <span>faster</span>, <span>smoother</span>, and a little more <span>delightful</span>.
         </p>
         <div class="button-row">
-          <button class="primary-button" id="accept-cookies">Accept all cookies</button>
+          <button class="primary-button accept-cookies">Accept all cookies</button>
           <button class="secondary-button" id="manage-cookies">Manage cookies</button>
         </div>
       </dialog>
       <dialog id="settings-dialog">
         <h2>Cookie Preferences</h2>
         <p class="settings-description">Choose what information we can collect to improve your experience.</p>
-        <form id="settings-form" method="" action="">
+        <form id="settings-form">
           <div class="form-field">
-            <p id="browser-label">Browser</p>
+            <span id="browser-label">Browser</span>
             <label id="browser-toggle" for="browser" aria-labelledby="browser-label">
               <input type="checkbox" name="browser" id="browser" checked />
               <span class="slider"></span>
             </label>
           </div>
           <div class="form-field">
-            <p id="os-label">Operating System</p>
+            <span id="os-label">Operating System</span>
             <label id="os-toggle" for="os" aria-labelledby="os-label">
               <input type="checkbox" name="os" id="os" checked />
               <span class="slider"></span>
             </label>
           </div>
           <div class="form-field">
-            <p id="height-label">Screen Height</p>
+            <span id="height-label">Screen Height</span>
             <label id="height-toggle" for="height" aria-labelledby="height-label">
               <input type="checkbox" name="height" id="height" checked />
               <span class="slider"></span>
             </label>
           </div>
           <div class="form-field">
-            <p id="width-label">Screen Width</p>
+            <span id="width-label">Screen Width</span>
             <label id="width-toggle" for="width" aria-labelledby="width-label">
               <input type="checkbox" name="width" id="width" checked />
               <span class="slider"></span>
             </label>
           </div>
           <div class="button-row">
-            <button type="button" id="accept-cookies" class="secondary-button">Accept all</button>
+            <button type="button" class="secondary-button accept-cookies">Accept all</button>
             <button type="button" id="reject-cookies" class="secondary-button">Reject all</button>
           </div>
           <input class="primary-button" type="submit" value="Save Preferences" />

@@ -2,6 +2,7 @@
 
 :root {
   --primary-color: #ff6c29;
+  --primary-color-hover: #a43705;
   --dark-primary-color: #d85619;
   --secondary-color: #67f65d;
   --dark-secondary-color: #2a9822;
@@ -43,15 +44,14 @@ h1 {
 }
 
 dialog {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 2rem;
   border: none;
   border-radius: 5px;
-  max-width: 50rem;
-  width: 100%;
+  width: min(95%, 50rem);
   text-align: center;
 }
 
@@ -61,7 +61,8 @@ dialog::backdrop {
 
 i,
 h2,
-dialog p {
+dialog p,
+.form-field > span {
   padding-bottom: 1.5rem;
 }
 
@@ -73,15 +74,15 @@ dialog p {
   font-size: 1.8rem;
 }
 
-dialog span {
+dialog p span {
   font-weight: 600;
 }
 
-dialog span:nth-child(even) {
+dialog p span:nth-child(even) {
   color: var(--dark-primary-color);
 }
 
-dialog span:nth-child(odd) {
+dialog p span:nth-child(odd) {
   color: var(--dark-secondary-color);
 }
 
@@ -95,23 +96,21 @@ input[type="submit"] {
   border: 1px solid var(--dark-primary-color);
 }
 
-.primary-button {
+.primary-button,
+.secondary-button:hover,
+.secondary-button:focus-visible {
   background-color: var(--dark-primary-color);
   color: #fff;
 }
 
-.primary-button:hover {
-  background-color: #bc4a16;
+.primary-button:hover,
+.primary-button:focus-visible {
+  background-color: var(--primary-color-hover);
 }
 
 .secondary-button {
   background-color: transparent;
   color: var(--dark-primary-color);
-}
-
-.secondary-button:hover {
-  background-color: var(--dark-primary-color);
-  color: #fff;
 }
 
 i {
@@ -169,7 +168,7 @@ label input[type="checkbox"] {
   inset: 0;
   background-color: #bebebe;
   border-radius: 99px;
-  transition: all 0.4s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .slider::before {
@@ -182,6 +181,11 @@ label input[type="checkbox"] {
   border-radius: 50%;
   background-color: #fff;
   transition: all 0.3s ease-in-out;
+}
+
+input:focus-visible + .slider {
+  outline: 2px solid var(--dark-secondary-color);
+  outline-offset: 2px;
 }
 
 input:checked + .slider {
